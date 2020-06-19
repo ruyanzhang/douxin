@@ -1,0 +1,8 @@
+const Router = require('@koa/router')
+const chatMessage = require('../controller/chat/chatMessage')
+const chatRoom = require('../controller/chat/chatRoom')
+const jwToken = require('../middleware/jwt')
+const router = new Router()
+router.get('/chat/chatMessage', jwToken, chatMessage.getChatMessage.bind(chatMessage))
+router.get('/chat/chatRoom', jwToken, chatRoom.getChatRoom.bind(chatRoom))
+module.exports = router.routes()

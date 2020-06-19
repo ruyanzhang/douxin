@@ -1,0 +1,7 @@
+$primary-color: #57a3f3;
+$link-color: $primary-color;
+$link-hover-color: mix($link-color , #000, 80%);
+$btn-gradient-start-color: $primary-color;
+$btn-gradient-end-color: $primary-color;
+$btn-gradient-bg: linear-gradient(315deg, $btn-gradient-start-color 0%, $btn-gradient-end-color 100%) !default;
+$btn-gradient-active-bg: linear-gradient(315deg, darken($btn-gradient-start-color, 10%) 0%, darken($btn-gradient-end-color, 10%) 100%) !default;

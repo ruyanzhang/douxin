@@ -1,0 +1,7 @@
+const Router = require('@koa/router')
+const users = require('../controller/users/users')
+const jwToken = require('../middleware/jwt')
+const router = new Router()
+router.get('/user', jwToken, users.getUserInfo.bind(users))
+router.post('/login', users.login.bind(users))
+module.exports = router.routes()

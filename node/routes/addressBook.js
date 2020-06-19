@@ -1,0 +1,6 @@
+const Router = require('@koa/router')
+const addressBook = require('../controller/addressBook/addressBook')
+const jwToken = require('../middleware/jwt')
+const router = new Router()
+router.get('/addressBook', jwToken, addressBook.getAddressBook.bind(addressBook))
+module.exports = router.routes()
