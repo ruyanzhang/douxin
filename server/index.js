@@ -37,14 +37,21 @@ async function start () {
   app.use(bodyParser())
 
   // io
+  const user = {}
   const server = require('http').createServer(app.callback())
   const io = require('socket.io')(server)
   io.sockets.on('connection', (socket) => {
     // console.log('连接成功', { id: socket.id })
-    socket.on('addMessage', async (data) => {
+    socket.on('signIn', (username) => {
+      user[username] = socket.id
+    })
+    socket.on('addMessage', async (to, data) => {
+      if (!to || !data) {
+        return
+      }
       const d = await ChatMessageModel.addChatMessage(data)
-      // io.sockets.connected[socket.id].emit('getMessage', d || {})
-      io.sockets.emit('getMessage', d || {})
+      user[to] && io.sockets.connected[user[to]].emit('getMessage', d || {})
+      io.sockets.connected[socket.id].emit('getMessage', d || {})
     })
     socket.on('disconnect', () => {
       console.log('chatMessage disconnected')

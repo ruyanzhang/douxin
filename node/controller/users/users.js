@@ -67,6 +67,7 @@ class Users {
       ctx.cookies.set('USER-ID', users._id, {
         maxAge: expires * 60 * 1000
       })
+      users.password = ''
       ctx.body = {
         status: 200,
         success: message.successLogin,

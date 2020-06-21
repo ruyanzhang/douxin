@@ -43,6 +43,7 @@ img{max-width: 100%;}
 .page-content {
   height: calc(100vh - @tab-bar-height - @page-top);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 // input

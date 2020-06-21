@@ -1,7 +1,9 @@
+const webpack = require('webpack')
 const host = process.env.NODE_ENV === 'development'
   ? global.server.dev.host : global.server.product.host
 const port = process.env.NODE_ENV === 'development'
   ? global.server.dev.port : global.server.product.port
+console.log(webpack.DefinePlugin, 123456)
 module.exports = {
   mode: 'universal',
   /*
@@ -77,6 +79,11 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.serverUrl':JSON.stringify(`http://${host}:${port}/`)
+      })
+    ],
     postcss: [
       require('postcss-px2rem')({
         remUnit: 75
@@ -88,7 +95,7 @@ module.exports = {
     }
   },
   server: {
-    port, // default: 3000
-    host // default: localhost,
+    host,
+    port
   }
 }

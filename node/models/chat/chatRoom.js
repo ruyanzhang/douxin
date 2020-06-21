@@ -2,8 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ChatRoomSchema = new Schema({
-  room_id: Schema.Types.ObjectId, // 聊天室id
-  user_id: Schema.Types.ObjectId,
+  room_id: {
+    type: Schema.Types.ObjectId,
+    required: true
+  }, // 聊天室id
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true
+  },
   member_id: {
     type: [Schema.Types.ObjectId],
     required: true
@@ -16,18 +22,27 @@ const ChatRoomSchema = new Schema({
     type: Number, // 0代表一对一， 1代表一对多
     min: 0,
     max: 1,
-    required: true
+    required: true,
+    default: 0
   },
   room_nick: { // 群组昵称
     type: String,
-    maxlength: 20
+    maxlength: 20,
+    default: ''
   },
-  room_pic: String, // 群组头像
+  room_pic: {
+    type: String,
+    default: ''
+  }, // 群组头像
   self_nick: { // 自己在群组昵称
     type: String,
-    maxlength: 20
+    maxlength: 20,
+    default: ''
   },
-  room_background: String, // 聊天背景
+  room_background: {
+    type: String,
+    default: ''
+  }, // 聊天背景
   is_to_top: {
     type: Boolean,
     default: false

@@ -59,11 +59,16 @@ export default {
     },
     userId () {
       return this.$store.state.user.user_id
+    },
+    userName () {
+      return this.$store.state.user.username
     }
   },
   mounted () {
     this.goToBottom()
+    this.$socket.emit('signIn', this.userName)
     this.sockets.listener.subscribe('getMessage', (data) => {
+      console.log(data, 'chatMessage')
       const room_id = this.$route.query.room_id
       if (data.status === 200) {
         data.data && data.data.room_id === room_id &&
@@ -100,7 +105,8 @@ export default {
       const user_id = this.$store.state.user.user_id
       const room_id = this.$route.query.room_id
       const sender_pic = this.$store.state.user.user_pic
-      this.$socket.emit('addMessage', {
+      const contact_name = this.$route.query.contact_name
+      contact_name && room_id && this.$socket.emit('addMessage', contact_name, {
         room_id,
         message_type: this.messageType,
         message_content: this.messageContent,

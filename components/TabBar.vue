@@ -53,7 +53,6 @@ export default {
 }
 </script>
 <style lang="less">
-  @import '../assets/less/params.less';
   .nut-tabbar {
     height: @tab-bar-height;
   }

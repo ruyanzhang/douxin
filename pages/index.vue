@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     <ul class="chatRoom-list page-content">
       <li
         v-for="(item, index) in chatRoom"
@@ -24,9 +25,10 @@
 
 <script>
 import TabBar from '~/components/TabBar'
+import Header from '~/components/Header'
 export default {
   components: {
-    TabBar
+    TabBar, Header
   },
   async fetch (ctx) {
     await ctx.store.dispatch('chatRoom/getChatRoom')
@@ -43,10 +45,12 @@ export default {
   methods: {
     goToChatMessage (index) {
       const room_id = this.chatRoom[index].room_id
+      const contact_name = this.chatRoom[index].contact_info.username
       this.$router.push({
         path: '/chatMessage',
         query: {
-          room_id
+          room_id,
+          contact_name
         }
       })
     }
