@@ -35,7 +35,6 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/babel-polyfill', ssr: false },
     { src: '~/plugins/io.socket', ssr: false },
     '~/plugins/nutui',
     '~/plugins/store'
@@ -78,6 +77,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    transpile: ['vue-socket.io', 'vue-wait'], // babel不会转译node_modules
     plugins: [
       new webpack.DefinePlugin({
         'process.serverUrl':JSON.stringify(`http://${host}:${port}/`)

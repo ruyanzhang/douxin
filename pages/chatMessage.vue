@@ -178,7 +178,7 @@ export default {
     & > .chat-content {
       .content();
       color: #fff;
-      background-color: #40bcfff5;
+      background-color: #40bcff;
       margin-right: @space_lr;
     }
   }
