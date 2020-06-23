@@ -127,11 +127,8 @@ export default {
 
 <style scoped lang="less">
   @pic_size: 70px;
-  @space_lr: 20px;
-  @space_tb: 20px;
   @radius: 6px;
   @chat_padding: @space_lr * 2 +  @pic_size;
-  @font-size: 26px;
   @content-padding: 16px;
   @top: 80px;
   @bottom: 120px;
@@ -139,7 +136,7 @@ export default {
   .content {
     padding: @content-padding;
     border-radius: @radius;
-    font-size: @font-size;
+    font-size: @smaller-baze-size;
     word-wrap: break-word;
   }
   .chat {

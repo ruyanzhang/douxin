@@ -10,7 +10,9 @@ class ChatMessage {
       }
     } else {
       try {
-        const chatMessage = await chatMessageModel.find({ room_id })
+        const chatMessage = await chatMessageModel.find({ room_id }).sort({
+          send_time: 1
+        })
         ctx.body = {
           status: 200,
           success: message.successFind,

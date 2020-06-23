@@ -176,7 +176,9 @@ class AddressBook {
           message_type: 1,
           message_content: message.firstChat,
           send_id: user_id,
-          sender_pic: user_pic
+          sender_pic: user_pic,
+          send_time: Date.now(),
+          createDate: Date.now()
         })
         ctx.body = {
           status: 200,

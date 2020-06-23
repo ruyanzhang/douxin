@@ -3,7 +3,6 @@ const host = process.env.NODE_ENV === 'development'
   ? global.server.dev.host : global.server.product.host
 const port = process.env.NODE_ENV === 'development'
   ? global.server.dev.port : global.server.product.port
-console.log(webpack.DefinePlugin, 123456)
 module.exports = {
   mode: 'universal',
   /*

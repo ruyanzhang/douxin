@@ -66,7 +66,7 @@ class ChatRoom {
               type: 1,
               member_id: 1,
               member_info: 1,
-              last_message: { $slice: ["$last_message", -1] }
+              last_message: { $slice: ["$last_message", 0, 1] }
             }
           },
           { $unwind : "$last_message" },

@@ -14,7 +14,7 @@ const getters = {
           ...item,
           last_message: item.last_message || {},
           contact_info: (item.member_info && item.member_info[1]) || {},
-          last_send_time: (item.last_message && moment(item.last_message.send_time).format('YYYY-MM-DD')) || ''
+          last_send_time: (item.last_message && moment(item.last_message.send_time).format('YYYY-MM-DD HH:mm')) || ''
         }
       }
     })
