@@ -8,7 +8,7 @@ const config = {
     'X-Requested-With': 'XMLHttpRequest'
   },
   timeout: 10000,
-  baseURL: 'http://192.168.2.107:3000/',
+  baseURL: process.serverUrl,
   withCredentials: true,
   responseType: 'json',
   xsrfCookieName: 'XSRF-TOKEN',

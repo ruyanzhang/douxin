@@ -35,6 +35,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/babel-polyfill' },
     { src: '~/plugins/io.socket', ssr: false },
     '~/plugins/nutui',
     '~/plugins/store'
